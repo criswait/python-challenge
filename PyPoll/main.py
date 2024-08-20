@@ -2,8 +2,14 @@
 import os
 import csv
 
+
+
+# Ensure the script's directory is the working directory
+#code suggested by chatGPT to ensuring that relative paths will be resolved correctly
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 #path to csv
-csvpath = '/Users/cristianwaitman/Desktop/Challenge 3/PyPoll/Resources/election_data.csv'
+csvpath = os.path.join('Resources', 'election_data.csv')
 
 
 # Lists to store data
@@ -12,6 +18,7 @@ candidate = []
 
 # Dictionary to store candidate votes
 candidate_votes = {}
+
 
 #open csv file using UTF-8 encoding
 with open(csvpath, encoding='UTF-8') as csvfile:
@@ -84,7 +91,7 @@ print(analysis)
 
 
 # Export prints to a text file
-output_path = '/Users/cristianwaitman/Desktop/Challenge 3/PyPoll/Analysis/PyPoll_analysis.txt'
+output_path = os.path.join('Analysis', 'PyPoll_analysis.txt')
 
 with open(output_path, 'w') as text_file:
     text_file.write(analysis)

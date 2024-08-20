@@ -3,8 +3,12 @@
 import os
 import csv
 
+# Ensure the script's directory is the working directory
+# Code suggested by chatGPT to ensuring that relative paths will be resolved correctly
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 #path to csv
-csvpath = '/Users/cristianwaitman/Desktop/Challenge 3/PyBank/Resources/budget_data.csv'
+csvpath = os.path.join('Resources', 'budget_data.csv')
 
 # Lists to store data
 date = []
@@ -74,25 +78,25 @@ great_decrease = [greatest_decrease_date, greatest_decrease_value]
 
 #prints
 analysis = (
-    "Financial Analysis\n"
+    "Financial Analysis\n\n"
 
 
-    " --------------------------- \n"
+    " --------------------------- \n\n"
 
 
-    f"Total Months: {total_months}\n"
+    f"Total Months: {total_months}\n\n"
 
 
-    f"Total: {net_total}\n"
+    f"Total: {net_total}\n\n"
 
 
-    f"Average Change: ${average_change}\n"
+    f"Average Change: ${average_change}\n\n"
 
 
-    f"Greatest Increase in Profits: {great_increase[0]} (${great_increase[1]})\n"
+    f"Greatest Increase in Profits: {great_increase[0]} (${great_increase[1]})\n\n"
 
 
-    f"Greatest Decrease in Profits: {great_decrease[0]} (${great_decrease[1]})\n"
+    f"Greatest Decrease in Profits: {great_decrease[0]} (${great_decrease[1]})\n\n"
 )
     
 
@@ -100,7 +104,7 @@ analysis = (
 print(analysis)
 
 # Export prints to a text file
-output_path = '/Users/cristianwaitman/Desktop/Challenge 3/PyBank/Analysis/PyBank_analysis.txt'
+output_path = os.path.join('Analysis', 'PyBank_analysis.txt')
 
 with open(output_path, 'w') as text_file:
     text_file.write(analysis)
